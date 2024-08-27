@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:NFTMarketplaceApp"
              x:Class="NFTMarketplaceApp.ExplorePage"
+             x:DataType="local:ExplorePage"
              Title="Explore">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ChangeColorConverter x:Key="ChangeColor" />
+            <local:ChangeArrowConverter x:Key="ChangeArrow" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <Grid
         RowDefinitions="Auto,*"
@@ -20,7 +28,7 @@
         <!-- Wallet -->
         <Border
             HorizontalOptions="End"
-            Background="#DCDCDC"
+            Background="#EEEEEE"
             StrokeThickness="0"
             StrokeShape="RoundRectangle 20"
             HeightRequest="40"
@@ -60,24 +68,13 @@
         <!-- Data -->
         <CollectionView
             Grid.Row="1"
-            Grid.ColumnSpan="2">
+            Grid.ColumnSpan="2"
+            ItemsSource="{Binding TopItems}">
             <CollectionView.ItemsLayout>
                 <LinearItemsLayout
                     Orientation="Vertical"
                     ItemSpacing="12" />
             </CollectionView.ItemsLayout>
-            <CollectionView.ItemsSource>
-                <x:Array Type="local:TopCollectionItem">
-                    <local:TopCollectionItem
-                        Name="Bear Baron"
-                        Type="Art Collection" />
-                    <local:TopCollectionItem />
-                    <local:TopCollectionItem />
-                    <local:TopCollectionItem />
-                    <local:TopCollectionItem />
-                    <local:TopCollectionItem />
-                </x:Array>
-            </CollectionView.ItemsSource>
             <CollectionView.Header>
                 <Grid
                     ColumnDefinitions="*,Auto"
@@ -196,7 +193,7 @@
                 <Grid HeightRequest="24" />
             </CollectionView.Footer>
             <CollectionView.ItemTemplate>
-                <DataTemplate >
+                <DataTemplate x:DataType="local:TopCollectionItem">
                     <Border
                         Stroke="#88AAAAAA"
                         Background="Transparent"
@@ -228,17 +225,42 @@
                                 Grid.Column="1" />
                             <Label
                                 Text="{Binding Type}"
+                                TextColor="Gray"
                                 Grid.Row="1"
                                 Grid.Column="1" />
 
                             <Label
-                                Text="Ends In"
-                                Grid.Column="2" />
-                            <Label
-                                Text="09:32:43"
-                                FontFamily="OpenSansBold"
                                 Grid.Column="2"
-                                Grid.Row="1" />
+                                HorizontalOptions="End">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            Text="{Binding Currency}"
+                                            FontFamily="OpenSansBold" />
+                                        <Span Text=" " />
+                                        <Span
+                                            Text="{Binding Price}"
+                                            FontFamily="OpenSansBold" />
+                                        <Span Text=" " />
+                                        <Span
+                                            Text="{Binding CurrencyName}"
+                                            TextColor="Gray" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <HorizontalStackLayout
+                                HorizontalOptions="End"
+                                Grid.Column="2"
+                                Grid.Row="1">
+                                <Label
+                                    Text="{Binding Change, Converter={StaticResource ChangeArrow}}"
+                                    TextColor="{Binding Change, Converter={StaticResource ChangeColor}}"
+                                    FontFamily="FontAwesome"
+                                    Rotation="45" />
+                                <Label
+                                    Text="{Binding Change, StringFormat='  {0:00.00} %'}"
+                                    TextColor="{Binding Change, Converter={StaticResource ChangeColor}}" />
+                            </HorizontalStackLayout>
                             
                         </Grid>
                     </Border>
@@ -247,7 +269,164 @@
         </CollectionView>
 
         <!-- Tab Bar -->
-        
+        <Border
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            VerticalOptions="End"
+            Margin="0,0,0,24"
+            HeightRequest="52"
+            StrokeThickness="0"
+            Background="#EEEEEE"
+            StrokeShape="RoundRectangle 26"
+            MaximumWidthRequest="300">
+            <Border.Shadow>
+                <Shadow
+                    Offset="0,25"
+                    Opacity="0.3"
+                    Radius="25"/>
+            </Border.Shadow>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Border
+                    Grid.Row="1"
+                    Grid.ColumnSpan="8"
+                    StrokeThickness="0"
+                    Background="Black"
+                    WidthRequest="100"
+                    Margin="4"
+                    StrokeShape="RoundRectangle 26">
+                </Border>
+
+                <Label
+                    Text="&#xf015;"
+                    FontFamily="FontAwesome"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="0"
+                    StyleClass="Home">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Home" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="Home"
+                    FontFamily="OpenSansSemiBold"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="1"
+                    StyleClass="Home">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Home" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label
+                    Text="&#xf14e;"
+                    FontFamily="FontAwesome"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="2"
+                    StyleClass="Explore">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Explore" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="Explore"
+                    FontFamily="OpenSansSemiBold"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="3"
+                    StyleClass="Explore">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Explore" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label
+                    Text="&#xf555;"
+                    FontFamily="FontAwesome"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="4"
+                    StyleClass="Wallet">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Wallet" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="Wallet"
+                    FontFamily="OpenSansSemiBold"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="5"
+                    StyleClass="Wallet">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Wallet" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Label
+                    Text="&#xf200;"
+                    FontFamily="FontAwesome"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="6"
+                    StyleClass="Stats">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Stats" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Text="Stats"
+                    FontFamily="OpenSansSemiBold"
+                    TextColor="Black"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="7"
+                    StyleClass="Stats">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnTabTapped"
+                            CommandParameter="Stats" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </Grid>
+
+        </Border>
     </Grid>
 
 </ContentPage>
