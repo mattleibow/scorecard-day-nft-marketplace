@@ -278,7 +278,8 @@
             StrokeThickness="0"
             Background="#EEEEEE"
             StrokeShape="RoundRectangle 26"
-            MaximumWidthRequest="300">
+            MaximumWidthRequest="300"
+            HorizontalOptions="Center">
             <Border.Shadow>
                 <Shadow
                     Offset="0,25"
@@ -286,15 +287,15 @@
                     Radius="25"/>
             </Border.Shadow>
 
-            <Grid>
+            <Grid ColumnSpacing="12" Padding="24,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
@@ -315,7 +316,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="0"
-                    StyleClass="Home">
+                    StyleClass="Home,Icon">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -329,7 +330,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="1"
-                    StyleClass="Home">
+                    StyleClass="Home,Text">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -344,7 +345,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="2"
-                    StyleClass="Explore">
+                    StyleClass="Explore,Icon">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -358,7 +359,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="3"
-                    StyleClass="Explore">
+                    StyleClass="Explore,Text">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -373,7 +374,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="4"
-                    StyleClass="Wallet">
+                    StyleClass="Wallet,Icon">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -387,7 +388,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="5"
-                    StyleClass="Wallet">
+                    StyleClass="Wallet,Text">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -402,7 +403,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="6"
-                    StyleClass="Stats">
+                    StyleClass="Stats,Icon">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"
@@ -416,7 +417,7 @@
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
                     Grid.Column="7"
-                    StyleClass="Stats">
+                    StyleClass="Stats,Text">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer
                             Tapped="OnTabTapped"

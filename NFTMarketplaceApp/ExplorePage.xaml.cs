@@ -66,20 +66,21 @@ public partial class ExplorePage : ContentPage
 		// DisplayAlert("Tab Tapped: " + sender, "Tab Tapped! " + e.Parameter, "OK");
 		var label = (Label)sender!;
 		var tabbar = (Grid)label.Parent;
+		var selected = (string)e.Parameter!;
 
 		foreach (var item in tabbar.Children)
 		{
 			if (item is Label tabItem)
 			{
-				tabItem.IsVisible = true;
-
-				if (tabItem.StyleClass == label.StyleClass)
+				if (tabItem.StyleClass.Contains(selected))
 				{
 					tabItem.IsVisible = true;
+					tabItem.TextColor = Colors.White;
 				}
 				else
 				{
-					if (tabItem.FontFamily != "FontAwesome")
+					tabItem.TextColor = Colors.Black;
+					if (tabItem.StyleClass.Contains("Text"))
 					{
 						tabItem.IsVisible = false;
 					}
