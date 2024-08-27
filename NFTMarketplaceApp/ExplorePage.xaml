@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:NFTMarketplaceApp"
+             x:Class="NFTMarketplaceApp.ExplorePage"
+             Title="Explore">
+
+    <Grid
+        RowDefinitions="Auto,*"
+        ColumnDefinitions="*,Auto"
+        Padding="24,24,24,0"
+        RowSpacing="18">
+
+        <!-- Heading -->
+        <Label
+            Text="Discover the New&#10;NFT Collection"
+            FontSize="24"
+            FontFamily="OpenSansSemiCondensedExtraBold" />
+
+        <!-- Wallet -->
+        <Border
+            HorizontalOptions="End"
+            Background="#DCDCDC"
+            StrokeThickness="0"
+            StrokeShape="RoundRectangle 20"
+            HeightRequest="40"
+            VerticalOptions="Center"
+            Grid.Column="1">
+            <Grid
+                ColumnDefinitions="Auto,Auto"
+                Padding="2,2,12,2"
+                ColumnSpacing="8">
+
+                <Border
+                    StrokeShape="RoundRectangle 18"
+                    StrokeThickness="0"
+                    Background="Black"
+                    WidthRequest="36"
+                    HeightRequest="36">
+                    <Label
+                        Text="$"
+                        FontSize="20"
+                        FontFamily="OpenSansSemiCondensedExtraBold"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center" />
+                </Border>
+
+                <Label
+                    Text="43.2"
+                    FontSize="16"
+                    FontFamily="OpenSansBold"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Grid.Column="1" />
+
+            </Grid>
+        </Border>
+
+        <!-- Data -->
+        <CollectionView
+            Grid.Row="1"
+            Grid.ColumnSpan="2">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout
+                    Orientation="Vertical"
+                    ItemSpacing="12" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemsSource>
+                <x:Array Type="local:TopCollectionItem">
+                    <local:TopCollectionItem
+                        Name="Bear Baron"
+                        Type="Art Collection" />
+                    <local:TopCollectionItem />
+                    <local:TopCollectionItem />
+                    <local:TopCollectionItem />
+                    <local:TopCollectionItem />
+                    <local:TopCollectionItem />
+                </x:Array>
+            </CollectionView.ItemsSource>
+            <CollectionView.Header>
+                <Grid
+                    ColumnDefinitions="*,Auto"
+                    RowDefinitions="Auto,*,Auto"
+                    RowSpacing="18"
+                    ColumnSpacing="6"
+                    Margin="0,0,0,6">
+
+                    <!-- Trending Collection -->
+                    <Label
+                        Text="Trending Collection"
+                        FontFamily="OpenSansExtraBold"
+                        />
+                    <Label
+                        Text="see more"
+                        FontFamily="OpenSansSemiBold"
+                        TextColor="Gray"
+                        Grid.Column="1" />
+
+                    <!-- Trending Collection Card -->
+                    <Border
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        HeightRequest="{Binding Width, Source={RelativeSource Self}}"
+                        StrokeShape="RoundRectangle 30"
+                        StrokeThickness="0">
+                        <Grid
+                            Padding="12">
+
+                            <Image
+                                Source="dotnet_bot.png"
+                                Background="Orange"
+                                Margin="-12" />
+
+                            <Button
+                                Text="&#xf004;"
+                                TextColor="White"
+                                FontFamily="FontAwesome"
+                                Background="#88AAAAAA"
+                                Padding="0"
+                                VerticalOptions="Start"
+                                HorizontalOptions="End"
+                                CornerRadius="20"
+                                WidthRequest="40"
+                                HeightRequest="40" />
+
+                            <Border
+                                Background="#88AAAAAA"
+                                Padding="12,6,6,6"
+                                VerticalOptions="End"
+                                HorizontalOptions="Fill"
+                                StrokeShape="RoundRectangle 23"
+                                StrokeThickness="0"
+                                Margin="0">
+                                <Grid
+                                    ColumnDefinitions="*,*,Auto"
+                                    RowDefinitions="*,*">
+
+                                    <Label
+                                        Text="Current Bid" 
+                                        TextColor="White" />
+                                    <Label
+                                        Text="7.32 ETH"
+                                        FontFamily="OpenSansBold"
+                                        TextColor="White"
+                                        Grid.Row="1" />
+
+                                    <Label
+                                        Text="Ends In"
+                                        TextColor="White"
+                                        Grid.Column="1" />
+                                    <Label
+                                        Text="09:32:43"
+                                        FontFamily="OpenSansBold"
+                                        TextColor="White"
+                                        Grid.Column="1"
+                                        Grid.Row="1" />
+                                    
+                                    <Button
+                                        Text="&#xf176;"
+                                        TextColor="White"
+                                        FontFamily="FontAwesome"
+                                        Background="#AA333333"
+                                        Padding="0"
+                                        VerticalOptions="Center"
+                                        HorizontalOptions="End"
+                                        CornerRadius="20"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Grid.Column="2"
+                                        Grid.RowSpan="2"
+                                        Rotation="45" />
+
+                                </Grid>
+                            </Border>
+
+                        </Grid>
+                        
+                    </Border>
+                
+                    <!-- Top Collections -->
+                    <Label
+                        Text="Top Collections"
+                        FontFamily="OpenSansExtraBold"
+                        Grid.Row="2"
+                        />
+                    <Label
+                        Text="see more"
+                        FontFamily="OpenSansSemiBold"
+                        TextColor="Gray"
+                        Grid.Row="2"
+                        Grid.Column="1" />
+                </Grid>
+            </CollectionView.Header>
+            <CollectionView.Footer>
+                <Grid HeightRequest="24" />
+            </CollectionView.Footer>
+            <CollectionView.ItemTemplate>
+                <DataTemplate >
+                    <Border
+                        Stroke="#88AAAAAA"
+                        Background="Transparent"
+                        Padding="6,6,12,6"
+                        VerticalOptions="End"
+                        HorizontalOptions="Fill"
+                        StrokeShape="RoundRectangle 23"
+                        StrokeThickness="1"
+                        Margin="0">
+                        <Grid
+                            ColumnDefinitions="Auto,*,*"
+                            RowDefinitions="*,*"
+                            ColumnSpacing="6">
+
+                            <Border
+                                Background="#AA333333"
+                                Padding="0"
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                StrokeShape="RoundRectangle 20"
+                                WidthRequest="40"
+                                HeightRequest="40"
+                                Grid.RowSpan="2"
+                                Rotation="45" />
+
+                            <Label
+                                Text="{Binding Name}" 
+                                FontFamily="OpenSansBold"
+                                Grid.Column="1" />
+                            <Label
+                                Text="{Binding Type}"
+                                Grid.Row="1"
+                                Grid.Column="1" />
+
+                            <Label
+                                Text="Ends In"
+                                Grid.Column="2" />
+                            <Label
+                                Text="09:32:43"
+                                FontFamily="OpenSansBold"
+                                Grid.Column="2"
+                                Grid.Row="1" />
+                            
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Tab Bar -->
+        
+    </Grid>
+
+</ContentPage>

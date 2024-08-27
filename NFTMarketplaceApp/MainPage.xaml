@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NFTMarketplaceApp.MainPage"
+             Background="#540EBB">
+
+        <Grid>
+
+            <!-- Background Image -->
+            <Image
+                Source="welcome_background.jpeg"
+                Aspect="AspectFill"
+                Margin="0,-175,0,100" />
+
+            <!-- Content -->
+            <Border
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                StrokeThickness="0">
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#00540EBB" Offset="0" />
+                        <GradientStop Color="#FF540EBB" Offset="0.5" />
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <VerticalStackLayout
+                    Padding="24,0,24,24">
+
+                    <!-- Welcome Text -->
+                    <Label
+                        Text="Welcome to the&#10;NFT Marketplace"
+                        FontSize="40" 
+                        FontFamily="OpenSansSemiCondensedExtraBold"
+                        LineHeight="0.8"
+                        TextColor="White" />
+
+                    <!-- Promotional Text -->
+                    <Label
+                        Text="Sell your NFT cards quickly and securely with our easy-to-use platform. Reach a wider audience and get the best prices for your digital collectibles." 
+                        FontFamily="OpenSansLight"
+                        FontSize="16" 
+                        TextColor="White"
+                        Margin="0,6,0,36" />
+
+                    <!-- Button -->
+                    <Border
+                        StrokeThickness="0"
+                        Background="White"
+                        StrokeShape="RoundRectangle 30"
+                        HeightRequest="60"
+                        Padding="20,0">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnGetStartedTapped" />
+                        </Border.GestureRecognizers>
+                        <Grid>
+                            <Label
+                                Text="&#xf054;&#xf054;&#xf054;"
+                                FontFamily="FontAwesome"
+                                FontSize="24" 
+                                VerticalOptions="Center"
+                                HorizontalOptions="End"
+                                SizeChanged="OnChevronsSizeChanged" />
+                            <Border
+                                x:Name="gradientOverlay"
+                                WidthRequest="100"
+                                StrokeThickness="0"
+                                HorizontalOptions="End"
+                                Margin="0,0,-20,0">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                        <GradientStop Color="#00FFFFFF" Offset="0.000" />
+                                        <GradientStop Color="#CCFFFFFF" Offset="0.333" />
+                                        <GradientStop Color="#CCFFFFFF" Offset="0.667" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1.000" />
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                            </Border>
+
+                            <Label
+                                Text="&#xf07a;"
+                                FontFamily="FontAwesome"
+                                FontSize="18" 
+                                VerticalOptions="Center"
+                                HorizontalOptions="Start" />
+
+                            <Label
+                                Text="Get Started" 
+                                FontSize="18"
+                                FontFamily="OpenSansSemiBold"
+                                TextColor="Black"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Grid>
+                    </Border>
+
+                </VerticalStackLayout>
+                
+            </Border>
+
+        </Grid>
+
+</ContentPage>
